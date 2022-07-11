@@ -4,3 +4,4 @@ from .models import *
 
 admin.site.register(Catagory)
 admin.site.register(Post)
+admin.site.register(ContactUs)

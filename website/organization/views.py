@@ -1,5 +1,5 @@
 from django.shortcuts import render,get_object_or_404
-from .models import Catagory, Post
+from .models import Catagory, Post, ContactUs
 # Create your views here.
 
 def home(request):
@@ -22,6 +22,25 @@ def blog_detail(request, id):
 
 
 def contactus(request):
+   if request.method == "POST":
+      # data from the form 
+      # ***********************************
+      name = request.POST.get('name')
+      email = request.POST.get('email')
+      subject = request.POST.get('subject')
+      message = request.POST.get('message')
+   # ***********************************
+      contact = ContactUs()
+      print("######################################")
+      print(contact)
+      contact.name = name
+      contact.email = email
+      contact.subject = subject
+      contact.message = message
+      contact.save()
+      print(contact)
+      
+      print("######################################")
    return render(request,'contact.html')
 
 
